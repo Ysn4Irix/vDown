@@ -95,6 +95,8 @@ const index = {
         next(
           err.message.includes("Unable to download API page")
             ? new Error("No internet, Check your network")
+            : err.message.includes("is not a valid UR")
+            ? new Error("Invalid URL, Please check the URL!")
             : err
         )
       );

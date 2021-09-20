@@ -6,6 +6,9 @@
  * @desc [Middlewares]
  */
 
+const rateLimit = require("express-rate-limit");
+const slowDown = require("express-slow-down");
+
 const notFound = (req, res, next) => {
   const error = new Error(`Request Not Found - ${req.originalUrl}`);
   res.status(404);
@@ -24,7 +27,24 @@ const errorHandler = (error, req, res, next) => {
   });
 };
 
+const slowerDown = slowDown({
+  windowMs: 30 * 1000,
+  delayAfter: 1,
+  delayMs: 300,
+});
+
+const reqLimiter = rateLimit({
+  windowMs: 40 * 1000,
+  max: 4,
+  message: {
+    status: 429,
+    response: "Too many requests from this IP, please try again after 40s",
+  },
+});
+
 module.exports = {
   notFound,
   errorHandler,
+  slowerDown,
+  reqLimiter,
 };

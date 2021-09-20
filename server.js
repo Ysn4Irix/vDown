@@ -6,6 +6,7 @@
  * @desc [App Entry Point]
  */
 
+require("dotenv").config();
 const express = require("express");
 const logger = require("morgan");
 const helmet = require("helmet");
@@ -23,6 +24,9 @@ app.use(
     extended: false,
   })
 );
+
+app.use(middlewares.slowerDown);
+app.use(middlewares.reqLimiter);
 
 app.use("/api/", router);
 

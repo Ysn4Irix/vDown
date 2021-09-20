@@ -13,7 +13,7 @@ const { dailymotion } = require("../controllers/dailymotionController");
 const { instagram } = require("../controllers/instagramController");
 
 /* Send Welcome response. */
-router.get("/", (req, res) => {
+router.get("/", (req, res, next) => {
   res.status(200).json({
     Response: [
       {
@@ -24,7 +24,7 @@ router.get("/", (req, res) => {
 });
 
 /* post youtube response. */
-router.get("/youtube", youtubeDL);
+router.post("/youtube", youtubeDL);
 
 /* post tiktok response. */
 router.post("/tiktok", tiktok);
