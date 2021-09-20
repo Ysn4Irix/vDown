@@ -12,8 +12,19 @@ const { tiktok } = require("../controllers/tiktokController");
 const { dailymotion } = require("../controllers/dailymotionController");
 const { instagram } = require("../controllers/instagramController");
 
+/* Send Welcome response. */
+router.get("/", (req, res) => {
+  res.status(200).json({
+    Response: [
+      {
+        message: "Hello for vDown API 🤖",
+      },
+    ],
+  });
+});
+
 /* post youtube response. */
-router.post("/youtube", youtubeDL);
+router.get("/youtube", youtubeDL);
 
 /* post tiktok response. */
 router.post("/tiktok", tiktok);
