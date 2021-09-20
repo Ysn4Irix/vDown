@@ -3,7 +3,7 @@
 An video/photo downloader API for tiktok,instagram,youtube,dailymotion build with [NodeJS](https://nodejs.org)
 
 ## Demo
-API is Live on this [Link](https://yvdown.herokuapp.com/)
+API is Live on this [Link](https://yvdown.herokuapp.com/api)
 
 ## Installation
 
